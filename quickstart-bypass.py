@@ -5,7 +5,7 @@ from instapy import InstaPy
 def main(argv):
 	username = '';
 	password = '';
-	hashtags = '';
+	hashtags = 'life';
 	tagamount = 1;
 	likeamount = 1;
 	comment = 'Awesome,I love It';
@@ -50,20 +50,20 @@ def main(argv):
 	try:
 		session = InstaPy(username=insta_username,
 						  password=insta_password,
-						  headless_browser=True,
+						  headless_browser=False,
 						  bypass_suspicious_attempt=False,
 						  multi_logs=True)
 		session.login()
 
 		# settings
-		session.set_upper_follower_count(limit=650)
+		session.set_upper_follower_count(limit=550)
 		session.set_lower_follower_count(limit=25)
 		session.set_do_follow(enabled=True, percentage=10, times=1)
 		session.set_do_comment(True, percentage=10)
 		session.set_comments(comment.split(','))
 		
 		#session.set_dont_unfollow_active_users(enabled=True, posts=5)
-		session.unfollow_users(amount=10, onlyInstapyFollowed=True, onlyInstapyMethod = 'FIFO', sleep_delay=60)
+		#session.unfollow_users(amount=10, onlyInstapyFollowed=True, onlyInstapyMethod = 'FIFO', sleep_delay=60)
 		
 		# actions
 		#session.like_by_tags(hashtags.split(','), amount=1)

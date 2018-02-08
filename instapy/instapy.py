@@ -201,6 +201,8 @@ class InstaPy:
             chrome_options.add_argument('--no-sandbox')
             chrome_options.add_argument('--lang=en-US')
             chrome_options.add_argument('--disable-setuid-sandbox')
+            chrome_options.add_argument('--disable-gpu')
+            chrome_options.add_argument('--blink-settings=imagesEnabled=false')
 
             # this option implements Chrome Headless, a new (late 2017)
             # GUI-less browser. chromedriver 2.9 and above required
@@ -212,7 +214,8 @@ class InstaPy:
                                             .format(user_agent=user_agent))
 
             chrome_prefs = {
-                'intl.accept_languages': 'en-US'
+                'intl.accept_languages': 'en-US',
+                'profile.managed_default_content_settings.images':2
             }
             chrome_options.add_experimental_option('prefs', chrome_prefs)
             self.browser = webdriver.Chrome(chromedriver_location,
